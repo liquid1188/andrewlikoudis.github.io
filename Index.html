@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andrew Likoudis | Catholic Scholar, Editor & Consultant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-ivory: #FAF8F5;
+            --color-cream: #F5F1EA;
+            --color-gold: #C9A962;
+            --color-gold-dark: #A68A4B;
+            --color-burgundy: #722F37;
+            --color-burgundy-deep: #5A252C;
+            --color-navy: #1E2A3A;
+            --color-charcoal: #2C2C2C;
+            --color-text: #3A3A3A;
+            --color-text-light: #666666;
+            --font-display: 'Cormorant Garamond', serif;
+            --font-body: 'Libre Baskerville', serif;
+            --font-sans: 'Lato', sans-serif;
+        }
+
+```
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+        font-family: var(--font-body);
+        background-color: var(--color-ivory);
+        color: var(--color-text);
+        line-height: 1.8;
+        font-size: 17px;
+    }
+
+    /* Navigation */
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: rgba(250, 248, 245, 0.95);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(201, 169, 98, 0.2);
+        z-index: 1000;
+        padding: 1rem 0;
+    }
+    .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .nav-logo {
+        font-family: var(--font-display);
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--color-burgundy);
+        text-decoration: none;
+    }
+    .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+    }
+    .nav-links a {
+        font-family: var(--font-sans);
+        font-size: 0.8rem;
+        color: var(--color-text);
+        text-decoration: none;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        transition: color 0.3s ease;
+        position: relative;
+    }
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background: var(--color-gold);
+        transition: width 0.3s ease;
+    }
+    .nav-links a:hover { color: var(--color-burgundy); }
+    .nav-links a:hover::after { width: 100%; }
+    .mobile-menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        flex-direction: column;
+        gap: 5px;
+        padding: 0.5rem;
+    }
+    .mobile-menu-btn span {
+        display: block;
+        width: 25px;
+        height: 2px;
+        background: var(--color-burgundy);
+    }
+
+    /* Hero */
+    .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8rem 2rem 4rem;
+        background: linear-gradient(180deg, var(--color-ivory) 0%, var(--color-cream) 100%);
+        position: relative;
+        text-align: center;
+    }
+    .hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A962' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        opacity: 0.5;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 900px; }
+    .hero-subtitle {
+        font-family: var(--font-sans);
+        font-size: 0.85rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--color-gold-dark);
+        margin-bottom: 1.5rem;
+        animation: fadeInUp 0.8s ease forwards;
+        opacity: 0;
+    }
+    .hero-title {
+        font-family: var(--font-display);
+        font-size: clamp(3rem, 8vw, 5.5rem);
+        font-weight: 500;
+        color: var(--color-burgundy);
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+        animation: fadeInUp 0.8s ease 0.2s forwards;
+        opacity: 0;
+    }
+    .hero-tagline {
+        font-family: var(--font-display);
+        font-size: 1.5rem;
+        font-style: italic;
+        color: var(--color-text-light);
+        margin-bottom: 2.5rem;
+        animation: fadeInUp 0.8s ease 0.4s forwards;
+        opacity: 0;
+    }
+    .hero-credentials {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem 2rem;
+        font-family: var(--font-sans);
+        font-size: 0.8rem;
+        color: var(--color-text-light);
+        animation: fadeInUp 0.8s ease 0.6s forwards;
+        opacity: 0;
+    }
+    .hero-credentials span::before { content: '✦ '; color: var(--color-gold); font-size: 0.6rem; }
+    .hero-cta {
+        margin-top: 3rem;
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        animation: fadeInUp 0.8s ease 0.8s forwards;
+        opacity: 0;
+    }
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Buttons */
+    .btn {
+        display: inline-block;
+        padding: 1rem 2.5rem;
+        font-family: var(--font-sans);
+        font-size: 0.8rem;
+        font-weight: 500;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+    }
+    .btn-primary {
+        background: linear-gradient(135deg, var(--color-burgundy) 0%, var(--color-burgundy-deep) 100%);
+        color: var(--color-ivory);
+        border: none;
+    }
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px -10px rgba(114, 47, 55, 0.4);
+    }
+    .btn-outline {
+        background: transparent;
+        color: var(--color-burgundy);
+        border: 1px solid var(--color-burgundy);
+    }
+    .btn-outline:hover {
+        background: var(--color-burgundy);
+        color: var(--color-ivory);
+    }
+    .btn-gold {
+        background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-dark) 100%);
+        color: white;
+    }
+
+    /* Sections */
+    section { padding: 5rem 2rem; }
+    .alt-bg { background: var(--color-cream); }
+    .dark-bg { background: var(--color-navy); color: white; }
+    .dark-bg .section-label { color: var(--color-gold); }
+    .dark-bg .section-title { color: white; }
+    .section-container { max-width: 1100px; margin: 0 auto; }
+    .section-header { text-align: center; margin-bottom: 3rem; }
+    .section-label {
+        font-family: var(--font-sans);
+        font-size: 0.75rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--color-gold-dark);
+        margin-bottom: 0.75rem;
+        display: block;
+    }
+    .section-title {
+        font-family: var(--font-display);
+        font-size: 2.5rem;
+        font-weight: 500;
+        color: var(--color-burgundy);
+        line-height: 1.2;
+    }
+    .divider {
+        width: 60px;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+        margin: 1.5rem auto 0;
+    }
+
+    /* About */
+    .about-grid {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 3rem;
+        align-items: start;
+    }
+    .about-image {
+        width: 100%;
+        border-radius: 4px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+    }
+    .about-text p { margin-bottom: 1.25rem; text-align: justify; }
+    .highlight-box {
+        background: rgba(201, 169, 98, 0.1);
+        border-left: 3px solid var(--color-gold);
+        padding: 1.25rem;
+        margin: 1.5rem 0;
+        border-radius: 0 8px 8px 0;
+    }
+    .highlight-box h4 {
+        font-family: var(--font-sans);
+        font-size: 0.75rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--color-burgundy);
+        margin-bottom: 0.75rem;
+    }
+    .highlight-box ul { list-style: none; }
+    .highlight-box li {
+        font-family: var(--font-sans);
+        font-size: 0.85rem;
+        padding: 0.35rem 0;
+    }
+    .highlight-box li strong { color: var(--color-burgundy); }
+
+    /* Book Section */
+    .book-grid {
+        display: grid;
+        grid-template-columns: 260px 1fr;
+        gap: 3rem;
+        align-items: start;
+    }
+    .book-cover-container { position: relative; }
+    .book-cover {
+        width: 100%;
+        border-radius: 4px;
+        box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.25);
+    }
+    .book-badge {
+        position: absolute;
+        top: -12px;
+        right: -12px;
+        width: 65px;
+        height: 65px;
+        background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-dark) 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-family: var(--font-sans);
+        font-size: 0.6rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: white;
+        line-height: 1.2;
+    }
+    .book-info h2 {
+        font-family: var(--font-display);
+        font-size: 2.25rem;
+        color: var(--color-burgundy);
+        line-height: 1.15;
+    }
+    .book-subtitle {
+        font-family: var(--font-display);
+        font-size: 1.15rem;
+        font-style: italic;
+        color: var(--color-text-light);
+        margin: 0.5rem 0 1rem;
+    }
+    .book-meta {
+        font-family: var(--font-sans);
+        font-size: 0.85rem;
+        color: var(--color-text-light);
+        margin-bottom: 1.5rem;
+    }
+    .endorsement-card {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 8px;
+        border-left: 4px solid var(--color-gold);
+        margin: 1.5rem 0;
+        box-shadow: 0 10px 40px -15px rgba(0, 0, 0, 0.1);
+    }
+    .endorsement-card blockquote {
+        font-family: var(--font-body);
+        font-size: 0.95rem;
+        font-style: italic;
+        line-height: 1.7;
+        margin-bottom: 1rem;
+    }
+    .endorsement-card cite {
+        font-family: var(--font-sans);
+        font-size: 0.8rem;
+        font-style: normal;
+        color: var(--color-burgundy);
+        font-weight: 600;
+    }
+    .endorsement-card .cite-title {
+        display: block;
+        font-weight: 400;
+        color: var(--color-text-light);
+        font-size: 0.75rem;
+        margin-top: 0.25rem;
+    }
+    .btn-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; }
+
+    /* TOC */
+    .toc-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
+    .toc-part {
+        background: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 10px 40px -15px rgba(0, 0, 0, 0.1);
+    }
+    .toc-part-header {
+        background: linear-gradient(135deg, var(--color-burgundy) 0%, var(--color-burgundy-deep) 100%);
+        padding: 1.25rem;
+        color: white;
+    }
+    .toc-part-header span {
+        font-family: var(--font-sans);
+        font-size: 0.7rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--color-gold);
+        display: block;
+        margin-bottom: 0.25rem;
+    }
+    .toc-part-header h3 {
+        font-family: var(--font-display);
+        font-size: 1.35rem;
+        font-weight: 500;
+    }
+    .toc-chapters { padding: 1rem; list-style: none; }
+    .toc-chapter {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        font-size: 0.85rem;
+    }
+    .toc-chapter:last-child { border-bottom: none; }
+    .chapter-number {
+        font-family: var(--font-sans);
+        font-size: 0.65rem;
+        font-weight: 600;
+        color: var(--color-gold-dark);
+        margin-right: 0.4rem;
+    }
+    .chapter-title { font-family: var(--font-display); color: var(--color-charcoal); }
+    .chapter-author {
+        display: block;
+        font-family: var(--font-sans);
+        font-size: 0.75rem;
+        color: var(--color-burgundy);
+        margin-top: 0.15rem;
+    }
+
+    /* Services */
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    .service-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 10px 40px -15px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+    }
+    .service-card:hover { transform: translateY(-4px); }
+    .service-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+        background: linear-gradient(180deg, var(--color-gold) 0%, var(--color-burgundy) 100%);
+        transform: scaleY(0);
+        transform-origin: top;
+        transition: transform 0.3s ease;
+    }
+    .service-card:hover::before { transform: scaleY(1); }
+    .service-number {
+        font-family: var(--font-display);
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: rgba(201, 169, 98, 0.2);
+        position: absolute;
+        top: 0.75rem;
+        right: 1rem;
+    }
+    .service-card h3 {
+        font-family: var(--font-display);
+        font-size: 1.35rem;
+        color: var(--color-burgundy);
+        margin-bottom: 0.75rem;
+    }
+    .service-card p {
+        font-size: 0.9rem;
+        color: var(--color-text-light);
+        margin-bottom: 1rem;
+    }
+    .service-list { list-style: none; }
+    .service-list li {
+        font-family: var(--font-sans);
+        font-size: 0.8rem;
+        padding: 0.4rem 0 0.4rem 1.25rem;
+        position: relative;
+    }
+    .service-list li::before {
+        content: '✦';
+        position: absolute;
+        left: 0;
+        color: var(--color-gold);
+        font-size: 0.5rem;
+    }
+
+    /* Portfolio */
+    .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
+    .portfolio-item {
+        background: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 10px 40px -15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+    .portfolio-item:hover { transform: translateY(-4px); }
+    .portfolio-item-header {
+        background: linear-gradient(135deg, var(--color-burgundy) 0%, var(--color-burgundy-deep) 100%);
+        padding: 1.25rem;
+        color: white;
+    }
+    .portfolio-category {
+        font-family: var(--font-sans);
+        font-size: 0.65rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--color-gold);
+        margin-bottom: 0.4rem;
+    }
+    .portfolio-item h4 {
+        font-family: var(--font-display);
+        font-size: 1rem;
+        font-weight: 500;
+        line-height: 1.3;
+    }
+    .portfolio-item-body { padding: 1.25rem; }
+    .portfolio-item p {
+        font-size: 0.8rem;
+        color: var(--color-text-light);
+        margin-bottom: 0.75rem;
+    }
+    .portfolio-link {
+        font-family: var(--font-sans);
+        font-size: 0.7rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--color-burgundy);
+        text-decoration: none;
+        font-weight: 500;
+    }
+    .portfolio-link:hover { color: var(--color-gold-dark); }
+    .portfolio-link::after { content: ' →'; }
+
+    /* Experience */
+    .experience-timeline { max-width: 800px; margin: 0 auto; }
+    .experience-item {
+        display: grid;
+        grid-template-columns: 150px 1fr;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .experience-item:last-child { border-bottom: none; }
+    .experience-date {
+        font-family: var(--font-sans);
+        font-size: 0.8rem;
+        color: var(--color-gold);
+        text-align: right;
+        padding-top: 0.25rem;
+    }
+    .experience-content h4 {
+        font-family: var(--font-display);
+        font-size: 1.25rem;
+        color: white;
+        margin-bottom: 0.25rem;
+    }
+    .experience-org {
+        font-family: var(--font-sans);
+        font-size: 0.85rem;
+        color: var(--color-gold);
+        margin-bottom: 0.5rem;
+    }
+    .experience-content p {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.6;
+    }
+
+    /* Affiliations */
+    .affiliations {
+        background: var(--color-burgundy);
+        padding: 2.5rem 2rem;
+        text-align: center;
+    }
+    .affiliations-title {
+        font-family: var(--font-sans);
+        font-size: 0.7rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--color-gold);
+        margin-bottom: 1.5rem;
+    }
+    .affiliations-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem 2.5rem;
+        font-family: var(--font-display);
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* Contact */
+    .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+    }
+    .contact-info h3 {
+        font-family: var(--font-display);
+        font-size: 1.5rem;
+        color: var(--color-burgundy);
+        margin-bottom: 1rem;
+    }
+    .contact-info > p { color: var(--color-text-light); margin-bottom: 1.5rem; }
+    .contact-links { display: flex; flex-direction: column; gap: 0.75rem; }
+    .contact-link {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-family: var(--font-sans);
+        font-size: 0.85rem;
+        color: var(--color-text);
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    .contact-link:hover { color: var(--color-burgundy); }
+    .contact-link-icon {
+        width: 36px;
+        height: 36px;
+        background: var(--color-burgundy);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 0.9rem;
+        flex-shrink: 0;
+    }
+    .contact-form {
+        background: white;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.1);
+    }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-group label {
+        display: block;
+        font-family: var(--font-sans);
+        font-size: 0.7rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--color-text-light);
+        margin-bottom: 0.4rem;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        font-family: var(--font-body);
+        font-size: 0.9rem;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+        background: var(--color-ivory);
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+        outline: none;
+        border-color: var(--color-gold);
+        box-shadow: 0 0 0 3px rgba(201, 169, 98, 0.1);
+    }
+    .form-group textarea { min-height: 100px; resize: vertical; }
+    .submit-btn {
+        width: 100%;
+        padding: 1rem;
+        font-family: var(--font-sans);
+        font-size: 0.8rem;
+        font-weight: 500;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: white;
+        background: linear-gradient(135deg, var(--color-burgundy) 0%, var(--color-burgundy-deep) 100%);
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px -10px rgba(114, 47, 55, 0.4);
+    }
+
+    /* Footer */
+    footer {
+        background: var(--color-charcoal);
+        color: var(--color-ivory);
+        padding: 2.5rem 2rem;
+        text-align: center;
+    }
+    .footer-quote {
+        font-family: var(--font-display);
+        font-size: 1.15rem;
+        font-style: italic;
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 0.4rem;
+    }
+    .footer-attribution {
+        font-family: var(--font-sans);
+        font-size: 0.75rem;
+        color: var(--color-gold);
+        margin-bottom: 1.5rem;
+    }
+    .footer-social {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    .footer-social a {
+        color: rgba(255, 255, 255, 0.6);
+        font-family: var(--font-sans);
+        font-size: 0.8rem;
+        text-decoration: none;
+    }
+    .footer-social a:hover { color: var(--color-gold); }
+    .footer-copyright {
+        font-family: var(--font-sans);
+        font-size: 0.7rem;
+        color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+        .toc-grid, .services-grid { grid-template-columns: 1fr; }
+        .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+        .nav-links {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--color-ivory);
+            flex-direction: column;
+            padding: 1.5rem 2rem;
+            gap: 1rem;
+            border-bottom: 1px solid rgba(201, 169, 98, 0.2);
+        }
+        .nav-links.active { display: flex; }
+        .mobile-menu-btn { display: flex; }
+        .about-grid, .book-grid, .contact-grid { grid-template-columns: 1fr; }
+        .about-grid img, .book-cover-container { max-width: 250px; margin: 0 auto 2rem; }
+        .portfolio-grid { grid-template-columns: 1fr; }
+        .experience-item { grid-template-columns: 1fr; gap: 0.5rem; }
+        .experience-date { text-align: left; }
+        .hero-title { font-size: 2.5rem; }
+    }
+</style>
+```
+
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="nav-logo">Andrew Likoudis</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#book">Faith in Crisis</a></li>
+                <li><a href="#services">Consulting</a></li>
+                <li><a href="#portfolio">Writing</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+```
+<!-- Hero -->
+<section class="hero" id="home">
+    <div class="hero-content">
+        <p class="hero-subtitle">Catholic Scholar • Editor • Consultant</p>
+        <h1 class="hero-title">Andrew Likoudis</h1>
+        <p class="hero-tagline">Advancing theological scholarship and Christian unity</p>
+        <div class="hero-credentials">
+            <span>Likoudis Legacy Foundation Founder</span>
+            <span>M.A. Catholic Studies, Franciscan University</span>
+            <span>17+ Articles, National Catholic Register</span>
+        </div>
+        <div class="hero-cta">
+            <a href="#book" class="btn btn-primary">Explore Faith in Crisis</a>
+            <a href="#contact" class="btn btn-outline">Request Consulting</a>
+        </div>
+    </div>
+</section>
+
+<!-- About -->
+<section id="about" class="alt-bg">
+    <div class="section-container">
+        <div class="section-header">
+            <p class="section-label">About</p>
+            <h2 class="section-title">Building on a Legacy of Faith</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="about-grid">
+            <img src="https://enroutebooksandmedia.com/wp-content/uploads/2025/06/Likoudis_A-808x1024.jpeg" alt="Andrew Likoudis" class="about-image">
+            <div class="about-text">
+                <p><strong>Andrew Likoudis</strong> is the founder of the Likoudis Legacy Foundation, an ecumenical initiative dedicated to advancing theological scholarship and Christian unity. His work bridges academic theology, Catholic media, and strategic nonprofit leadership.</p>
+                <p>His latest book, <em>Faith in Crisis</em> (En Route Books, 2025), features a foreword by Rocco Buttiglione and contributions from Cardinal Robert Sarah, Mike Aquilina, Jimmy Akin, Tim Staples, and 30+ others. The volume has received endorsements from Cardinal Odilo Scherer, Rodrigo Guerra, and Cardinal Christophe Pierre.</p>
+                <p>He is the grandson of <strong>James Likoudis</strong> (1928–2024), President Emeritus of Catholics United for the Faith, and nephew of <strong>Paul Likoudis</strong>, longtime editor of <em>The Wanderer</em>.</p>
+                <div class="highlight-box">
+                    <h4>Professional Development</h4>
+                    <ul>
+                        <li><strong>McKinsey Forward Program</strong> — Structured problem-solving & executive communication</li>
+                        <li><strong>Goldman Sachs 10,000 Small Businesses Fellow</strong> — Marketing development</li>
+                        <li><strong>Johns Hopkins University Fellow</strong> — Economic development (Bloomberg Philanthropies)</li>
+                        <li><strong>Word on Fire Institute</strong> — Theology, apologetics & evangelization certificates</li>
+                    </ul>
+                </div>
+                <p><strong>Education:</strong> M.A. Catholic Studies, Franciscan University of Steubenville • B.S. Communication Studies, Towson University • A.S. Business Administration, CCBC</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Book Section -->
+<section id="book">
+    <div class="section-container">
+        <div class="section-header">
+            <p class="section-label">Featured Book</p>
+            <h2 class="section-title">Faith in Crisis</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="book-grid">
+            <div class="book-cover-container">
+                <img src="https://enroutebooksandmedia.com/wp-content/uploads/2025/06/Faith-in-Crisis-Final-Cover-Front.jpg" alt="Faith in Crisis" class="book-cover">
+                <div class="book-badge">New<br>2025</div>
+            </div>
+            <div class="book-info">
+                <h2>Faith in Crisis</h2>
+                <p class="book-subtitle">Critical Dialogues in Catholic Traditionalism, Church Authority, and Reform</p>
+                <p class="book-meta"><strong>Edited by Andrew Likoudis</strong> • Foreword by Rocco Buttiglione • En Route Books & Media, 2025</p>
+                <p>Bringing together 30+ leading Catholic voices to address tradition, authority, and authentic reform. The volume unfolds in three parts: <strong>Traditionalism</strong>, <strong>Church Authority</strong>, and <strong>Reform</strong>.</p>
+                <div class="endorsement-card">
+                    <blockquote>"I welcome initiatives such as this volume, <em>Faith in Crisis</em>, which seeks to reaffirm ecclesial communion and the authentic meaning of the liturgy. There is only one 'Mass of the Ages': the one regulated by the Church's living Magisterium..."</blockquote>
+                    <cite>† Odilo Pedro Cardinal Scherer</cite>
+                    <span class="cite-title">Archbishop of São Paulo, Brazil</span>
+                </div>
+                <div class="btn-row">
+                    <a href="https://amzn.to/3KY25Ng" class="btn btn-primary" target="_blank">Order on Amazon</a>
+                    <a href="https://enroutebooksandmedia.com/faithincrisis/" class="btn btn-outline" target="_blank">En Route Books</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Full Table of Contents -->
+        <div style="margin-top: 4rem;">
+            <div class="section-header">
+                <p class="section-label">Contents</p>
+                <h2 class="section-title" style="font-size: 2rem;">Full Table of Contents</h2>
+                <div class="divider"></div>
+                <p style="color: var(--color-text-light); margin-top: 1rem; font-size: 0.9rem;"><strong>Foreword</strong> by Rocco Buttiglione • <strong>Preface</strong> • <strong>Introduction</strong> • <strong>Postscript</strong> • <strong>Index</strong></p>
+            </div>
+            <div class="toc-grid">
+                <!-- Part One -->
+                <div class="toc-part">
+                    <div class="toc-part-header">
+                        <span>Part One</span>
+                        <h3>Traditionalism</h3>
+                    </div>
+                    <ul class="toc-chapters">
+                        <li class="toc-chapter"><span class="chapter-number">1.</span><span class="chapter-title">Functionality Over Faith: A Modern Crisis</span><span class="chapter-author">Andrew Mioni</span></li>
+                        <li class="toc-chapter"><span class="chapter-number">2.</span><span class="chapter-title">Lessons from St. Hilary, the "Athanasius of the West"</span><span class="chapter-author">Mike Aquilina</span></li>
+                        <li class="toc-chapter"><span class="chapter-number">3.</span><span class="chapter-title">Rigorism in the Early Church: The First "Fundamentalists"</span><span class="chapter-author">James L. Papandrea, MDiv, PhD</span></li>
+                        <li class="toc-chapter"><span class="chapter-number">4.</span><span class="chapter-title">Fundamentalism & Americanism: Obstacles to Thinking with the Church</span><span class="chapter-author">William Masur, MS</span></li>
+                        <li class="toc-chapter"><span class="chapter-number">5.</span><span class="chapter-title">Reframing Orthodoxy: Beyond Conservative & Liberal</span><span class="chapter-author">Fr. Matthew Mary Bartow, MFVA</span></li>
+                        <li class="toc-chapter"><span class="chapter-number">6.</span><span class="chapter-title">Faithfulness, or Rigidity?</span><span class="chapter-author">Pedro Gabriel, MD</span></li>
+                        <li class="toc-chapter"><span class="chapter-number">7.</span><span class="chapter-title">What is Heresy?</span><span class="chapter-author">Jimmy Akin</span></li>
+                        <li class="toc-chapter"><span class="chapter-number">8.</span><span class="chapter-title">Diagnosing the Malaise of Modernism Within Traditionalism</span><span class="chapter-author">Pedro Gabriel, MD</span></li>
+                        <li class="toc-chapter"><span class="chapter-number">9.</span><span class="chapter-title">Private Revelation & Apparition Subculture Within Traditionalism</span><span class="chapter-author">Andrew Likoudis</span></li>
+                        <li class="toc-chapter"><span class="chapter-number">10.</span><span class="chapter-title">Clericalism & Spiritual Abuse Within Traditionalism</span><span class="chapter-author">Andrew Likoudis</span></li>
+                        <li class="toc-chapter"><span class="chapter-number">11.</span><span class="chapter-title">Trad-adjacent: Radical Catholic Reactionaryism</span><span class="chapter-author">Dave Armstrong</span></li>
+                    </ul>
+                </div>
+                <!-- Part Two -->
+                <div class="toc-part">
+                    <div class="toc-part-header">
+                        <span>Part Two</span>
+                        <h3>Church Authority</h3>
+                    </div>
+                    <ul class="toc-chapters">
+                        <li class="toc-chapter"><span class="chapter-number">12.</span><span class="chapter-title">Lessons from St. Peter's Papacy</span><span class="chapter-author">Suan Sonna</span></li>
+                        <li class="toc-chapter"><span class="chapter-number">13.</span><span class="chapter-title">Collegiality: A Traditional Doctrine</span><span class="chapter-author">Richard G. DeClue, Jr., SThD</span></li>
+                        <li class="toc-chapter"><span class="chapter-number">14.</span><span class="chapter-title">How Doctrinal Development Happens</span><span class="chapter-author">Jimmy Akin</span></li>
+                        <li class="toc-chapter"><span class="chapter-number">15.</span><span class="chapter-title">Finding Catholic Orthodoxy</span><span class="chapter-author">Mike Lewis, MA</span></li>
+                        <li class="toc-chapter"><span class="chapter-number">16.</span><span class="chapter-title">Thinking With the Mind of the Church</span><span class="chapter-author">Henry Matthew Alt, MA</span></li>
+                        <li class="toc-chapter"><span class="chapter-number">17.</span><span class="chapter-title">Catholic Clickbait: Digital Media & Outrage Culture</span><span class="chapter-author">Andrew Likoudis</span></li>
+                        <li class="toc-chapter"><span class="chapter-number">18.</span><span class="chapter-title">The Ordinary Magisterium and the Question of Dissent</span><span class="chapter-author">Robert Fastiggi, PhD</span></li>
+                        <li class="toc-chapter"><span class="chapter-number">19.</span><span class="chapter-title">The Antidote of Trust</span><span class="chapter-author">Laura Vander Vos</span></li>
+                        <li class="toc-chapter"><span class="chapter-number">20.</span><span class="chapter-title">The Spirit of Obedience</span><span class="chapter-author">Fr. Bernard Mulcahy OP, PhD</span></li>
+                        <li class="toc-chapter"><span class="chapter-number">21.</span><span class="chapter-title">Doctrinal Safety of the Ordinary Magisterium</span><span class="chapter-author">Emmett O'Regan, MPhil</span></li>
+                        <li class="toc-chapter"><span class="chapter-number">22.</span><span class="chapter-title">Heresy in the Pope's Non-definitive Acts?</span><span class="chapter-author">Michael Lofton, MA</span></li>
+                    </ul>
+                </div>
+                <!-- Part Three -->
+                <div class="toc-part">
+                    <div class="toc-part-header">
+                        <span>Part Three</span>
+                        <h3>Reform</h3>
+                    </div>
+                    <ul class="toc-chapters">
+                        <li class="toc-chapter"><span class="chapter-number">23.</span><span class="chapter-title">Vatican II & Theological Paradigms</span><span class="chapter-author">Michel Therrien, STL, SThD</span></li>
+                        <li class="toc-chapter"><span class="chapter-number">24.</span><span class="chapter-title">Conversion & Reform: Synodality</span><span class="chapter-author">Rafael Luciani, SThD</span></li>
+                        <li class="toc-chapter"><span class="chapter-number">25.</span><span class="chapter-title"><em>Veritatis Splendor</em> & <em>Amoris Laetitia</em></span><span class="chapter-author">Pedro Gabriel, MD</span></li>
+                        <li class="toc-chapter"><span class="chapter-number">26.</span><span class="chapter-title">The Death Penalty & Doctrinal Development</span><span class="chapter-author">Robert Fastiggi, PhD</span></li>
+                        <li class="toc-chapter"><span class="chapter-number">27.</span><span class="chapter-title">Hope of Salvation in Church Teaching</span><span class="chapter-author">Adam Rasmussen, PhD</span></li>
+                        <li class="toc-chapter"><span class="chapter-number">28.</span><span class="chapter-title">The Irrevocable Commitment to Christian Unity</span><span class="chapter-author">Andrew J. Boyd, STL</span></li>
+                        <li class="toc-chapter"><span class="chapter-number">29.</span><span class="chapter-title">The Right to Religious Liberty</span><span class="chapter-author">R. Michael Dunnigan, JCD, JD</span></li>
+                        <li class="toc-chapter"><span class="chapter-number">30.</span><span class="chapter-title">Interreligious Dialogue & the Incarnation</span><span class="chapter-author">Canon Francis J. Tiso, PhD</span></li>
+                        <li class="toc-chapter"><span class="chapter-number">31.</span><span class="chapter-title">Eastern Philosophy & Christology of Religions</span><span class="chapter-author">Tyler McNabb, PhD</span></li>
+                        <li class="toc-chapter"><span class="chapter-number">32.</span><span class="chapter-title">Catholic Teaching on the Jewish People</span><span class="chapter-author">Gavin D'Costa, PhD</span></li>
+                        <li class="toc-chapter"><span class="chapter-number">33.</span><span class="chapter-title">Do Catholics & Muslims Worship the Same God?</span><span class="chapter-author">Robert Fastiggi, PhD</span></li>
+                        <li class="toc-chapter"><span class="chapter-number">34.</span><span class="chapter-title">Inculturation & the "Pachamama" Ordeal</span><span class="chapter-author">Luis Dizon, MTS</span></li>
+                        <li class="toc-chapter"><span class="chapter-number">35.</span><span class="chapter-title">Missiology & Material Culture</span><span class="chapter-author">Steven Schloeder, PhD, AIA</span></li>
+                        <li class="toc-chapter"><span class="chapter-number">36.</span><span class="chapter-title">The Liturgical Reform in Retrospect</span><span class="chapter-author">James Likoudis, DD</span></li>
+                        <li class="toc-chapter"><span class="chapter-number">37.</span><span class="chapter-title">Challenges in Liturgy</span><span class="chapter-author">Andrew Likoudis</span></li>
+                        <li class="toc-chapter"><span class="chapter-number">38.</span><span class="chapter-title">Pope Francis' Vision of Liturgical Formation</span><span class="chapter-author">Timothy O'Malley, PhD</span></li>
+                        <li class="toc-chapter"><span class="chapter-number">39.</span><span class="chapter-title">The Road Ahead: True Ecclesial Unity</span><span class="chapter-author">Cardinal Robert Sarah</span></li>
+                        <li class="toc-chapter"><span class="chapter-number">40.</span><span class="chapter-title">Open Letter to Confused Young Catholics</span><span class="chapter-author">Gregory Downs, MATS</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services -->
+<section id="services" class="alt-bg">
+    <div class="section-container">
+        <div class="section-header">
+            <p class="section-label">Consulting Services</p>
+            <h2 class="section-title">Expert Guidance for Catholic Organizations</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <span class="service-number">01</span>
+                <h3>Publishing & Editorial</h3>
+                <p>For publishers, authors, and organizations seeking high-quality Catholic content.</p>
+                <ul class="service-list">
+                    <li>Manuscript development & theological accuracy</li>
+                    <li>Editorial review for magisterial alignment</li>
+                    <li>Anthology & multi-author volume management</li>
+                    <li>Publication strategy & launch planning</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <span class="service-number">02</span>
+                <h3>Strategic Planning for Nonprofits</h3>
+                <p>For Catholic nonprofits, apostolates, and charitable organizations.</p>
+                <ul class="service-list">
+                    <li>Organizational development & governance</li>
+                    <li>Mission alignment & operational roadmaps</li>
+                    <li>Fundraising strategy & donor engagement</li>
+                    <li>501(c)(3) formation guidance</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <span class="service-number">03</span>
+                <h3>Research & Writing</h3>
+                <p>For institutions and publications requiring high-quality Catholic content.</p>
+                <ul class="service-list">
+                    <li>Long-form analysis on Church policy & governance</li>
+                    <li>Policy memos & white papers</li>
+                    <li>Historical & theological research</li>
+                    <li>Ghostwriting & thought leadership</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <span class="service-number">04</span>
+                <h3>Speaking Engagements</h3>
+                <p>For parishes, conferences, universities, and Catholic organizations.</p>
+                <ul class="service-list">
+                    <li>Navigating Traditionalism & Church Authority</li>
+                    <li>The Liturgical Reform: Vatican II & Beyond</li>
+                    <li>Ecumenism & Catholic-Orthodox Relations</li>
+                    <li>Catholic Media & Young Adult Engagement</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Portfolio -->
+<section id="portfolio">
+    <div class="section-container">
+        <div class="section-header">
+            <p class="section-label">Writing Portfolio</p>
+            <h2 class="section-title">Published Works</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <div class="portfolio-item-header">
+                    <p class="portfolio-category">National Catholic Register</p>
+                    <h4>'Neuralink' vs. Imago Dei: Catholic Anthropology and AI</h4>
+                </div>
+                <div class="portfolio-item-body">
+                    <p>What Catholic Anthropology Has to Say About Musk's Tech and AI.</p>
+                    <a href="https://www.ncregister.com/news/neuralink-vs-imago-dei" class="portfolio-link" target="_blank">Read Article</a>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="portfolio-item-header">
+                    <p class="portfolio-category">National Catholic Register</p>
+                    <h4>Pier Giorgio Frassati Dressed for God, Not the World</h4>
+                </div>
+                <div class="portfolio-item-body">
+                    <p>How the soon-to-be Saint tailored his style for holiness.</p>
+                    <a href="https://www.ncregister.com/features/frassati-tailored-for-holiness" class="portfolio-link" target="_blank">Read Article</a>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="portfolio-item-header">
+                    <p class="portfolio-category">National Catholic Register</p>
+                    <h4>A Vocation in Beauty: Music Restoring the Sacred</h4>
+                </div>
+                <div class="portfolio-item-body">
+                    <p>How sacred music apostolates are renewing worship.</p>
+                    <a href="https://www.ncregister.com/features/sacred-music-apostolates" class="portfolio-link" target="_blank">Read Article</a>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="portfolio-item-header">
+                    <p class="portfolio-category">Where Peter Is</p>
+                    <h4>The Liturgical Reform — Council, Consilium, and Papacy</h4>
+                </div>
+                <div class="portfolio-item-body">
+                    <p>Comprehensive 5-part series on the Church's liturgical path.</p>
+                    <a href="https://wherepeteris.com/the-liturgical-path-of-the-church-after-vatican-ii/" class="portfolio-link" target="_blank">Read Series</a>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="portfolio-item-header">
+                    <p class="portfolio-category">Where Peter Is</p>
+                    <h4>Altar Against Altar: Wrestling with Rifts in the Church</h4>
+                </div>
+                <div class="portfolio-item-body">
+                    <p>Book review examining Catholic divisions.</p>
+                    <a href="https://wherepeteris.com/altar-against-altar-wrestling-with-rifts-in-the-catholic-church/" class="portfolio-link" target="_blank">Read Review</a>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="portfolio-item-header">
+                    <p class="portfolio-category">Patheos</p>
+                    <h4>"Nature and Grace" Column</h4>
+                </div>
+                <div class="portfolio-item-body">
+                    <p>The sociological intersection of faith and culture.</p>
+                    <a href="https://www.patheos.com/blogs/natureandgrace/" class="portfolio-link" target="_blank">Read Column</a>
+                </div>
+            </div>
+        </div>
+        <p style="text-align: center; margin-top: 2rem; font-family: var(--font-sans); font-size: 0.85rem; color: var(--color-text-light);"><strong>Also published in:</strong> Catholic Review • Catholic World News • Philosophy Now • Fellowship and Fairydust Magazine</p>
+    </div>
+</section>
+
+<!-- Experience -->
+<section id="experience" class="dark-bg">
+    <div class="section-container">
+        <div class="section-header">
+            <p class="section-label">Experience</p>
+            <h2 class="section-title">Professional Background</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="experience-timeline">
+            <div class="experience-item">
+                <div class="experience-date">2023 – Present</div>
+                <div class="experience-content">
+                    <h4>Founder & Chairman</h4>
+                    <p class="experience-org">Likoudis Legacy Foundation (501(c)(3))</p>
+                    <p>Built and scaled a nonprofit, establishing governance structures and leading strategic planning, fundraising, and initiatives across research, publishing, and advisory work.</p>
+                </div>
+            </div>
+            <div class="experience-item">
+                <div class="experience-date">June – Aug 2025</div>
+                <div class="experience-content">
+                    <h4>Summer Intern</h4>
+                    <p class="experience-org">EWTN / National Catholic Register</p>
+                    <p>Produced 17 published articles covering policy, governance, AI, and ethics for a national Catholic media outlet.</p>
+                </div>
+            </div>
+            <div class="experience-item">
+                <div class="experience-date">2022 – 2026</div>
+                <div class="experience-content">
+                    <h4>Young Adult Representative</h4>
+                    <p class="experience-org">Archdiocesan Pastoral Council, Archdiocese of Baltimore</p>
+                    <p>Selected as an archdiocese-wide representative advising senior leadership on young adult engagement under Archbishop William E. Lori.</p>
+                </div>
+            </div>
+            <div class="experience-item">
+                <div class="experience-date">2022</div>
+                <div class="experience-content">
+                    <h4>Fellow, Economic Development</h4>
+                    <p class="experience-org">Johns Hopkins University / Bloomberg Philanthropies</p>
+                    <p>Supported workforce development initiatives; produced policy memos and procurement research.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Affiliations -->
+<div class="affiliations">
+    <p class="affiliations-title">Professional Memberships</p>
+    <div class="affiliations-list">
+        <span>Society for Catholic Liturgy</span>
+        <span>Fellowship of Catholic Scholars</span>
+        <span>Society for Catholic Social Scientists</span>
+        <span>International Marian Association</span>
+        <span>Mariological Society of America</span>
+    </div>
+</div>
+
+<!-- Contact -->
+<section id="contact" class="alt-bg">
+    <div class="section-container">
+        <div class="section-header">
+            <p class="section-label">Contact</p>
+            <h2 class="section-title">Get in Touch</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h3>Let's Connect</h3>
+                <p>Whether you're interested in consulting services, speaking engagements, publishing collaboration, or simply want to connect about Catholic scholarship, I'd love to hear from you.</p>
+                <div class="contact-links">
+                    <a href="mailto:alikoudis@likoudislegacy.com" class="contact-link">
+                        <span class="contact-link-icon">✉</span>
+                        alikoudis@likoudislegacy.com
+                    </a>
+                    <a href="tel:410-409-1695" class="contact-link">
+                        <span class="contact-link-icon">☎</span>
+                        410-409-1695
+                    </a>
+                    <a href="https://linkedin.com/in/andrewlikoudis" class="contact-link" target="_blank">
+                        <span class="contact-link-icon">in</span>
+                        linkedin.com/in/andrewlikoudis
+                    </a>
+                    <a href="https://likoudislegacy.com" class="contact-link" target="_blank">
+                        <span class="contact-link-icon">🌐</span>
+                        likoudislegacy.com
+                    </a>
+                </div>
+            </div>
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select id="subject" name="subject">
+                            <option value="">Select a topic...</option>
+                            <option value="consulting">Consulting Services</option>
+                            <option value="speaking">Speaking Engagement</option>
+                            <option value="publishing">Publishing Collaboration</option>
+                            <option value="media">Media Inquiry</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-content">
+        <p class="footer-quote">"In the evening of life, we will be judged on love alone."</p>
+        <p class="footer-attribution">— St. John of the Cross</p>
+        <div class="footer-social">
+            <a href="https://linkedin.com/in/andrewlikoudis" target="_blank">LinkedIn</a>
+            <a href="https://instagram.com/likoudislegacy" target="_blank">Instagram</a>
+            <a href="https://x.com/A_lickity_split" target="_blank">X/Twitter</a>
+        </div>
+        <p class="footer-copyright">© 2025 Andrew Likoudis. All rights reserved.<br>Likoudis Legacy Foundation — A 501(c)(3) nonprofit organization.</p>
+    </div>
+</footer>
+
+<script>
+    // Mobile menu toggle
+    document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+        document.getElementById('navLinks').classList.toggle('active');
+    });
+    // Close menu on link click
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            document.getElementById('navLinks').classList.remove('active');
+        });
+    });
+    // Scroll shadow on nav
+    window.addEventListener('scroll', () => {
+        document.querySelector('nav').style.boxShadow = window.scrollY > 100 ? '0 4px 20px rgba(0,0,0,0.1)' : 'none';
+    });
+</script>
+```
+
+</body>
+</html>
